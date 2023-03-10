@@ -7,8 +7,9 @@ const register=async (userData)=>{
   const response=await axios.post(url,userData)
   
   if(response.data){
-    console.log(response.data)
+  localStorage.setItem('user',JSON.stringify(response.data))
   }
+  return response.data
 }
 
 const authService={

@@ -40,7 +40,7 @@ export const authSlice=createSlice({
      builder.addCase(register.pending,(state)=>{
       state.isLoading=true
      })
-     builder.addCase(register.success,(state,action)=>{
+     builder.addCase(register.fulfilled,(state,action)=>{
       state.loading=false
       state.success=true
       state.user=action.payload
