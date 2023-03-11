@@ -26,7 +26,7 @@ useEffect(()=>{
     navigate('/home')
   }
   dispatch(reset())
-})
+},[user,success,error,message,loading,dispatch,navigate])
 const onChange=(e)=>{
 setFormData(prev=>({
   ...prev,

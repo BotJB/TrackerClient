@@ -11,6 +11,7 @@ const initialState={
     success:false,
     message:' '
 }
+
 //Creating async thunk to register the user
 
 export const register=createAsyncThunk('/register',async(userData,thunkApi)=>{
@@ -23,6 +24,17 @@ export const register=createAsyncThunk('/register',async(userData,thunkApi)=>{
    return thunkApi.rejectWithValue(message)
   }
 })
+
+export const login =createAsyncThunk('/login',async(userData,thunkApi)=>{
+  try{
+    return await authService.login(userData)
+  }
+  catch(error){
+    const message=(error.response &&error.response.data&&error.response.data.message)||error.message||error.toString()
+   return thunkApi.rejectWithValue(message)
+  }
+})
+
 
 //we will create the slice here
 export const authSlice=createSlice({
@@ -46,6 +58,21 @@ export const authSlice=createSlice({
       state.user=action.payload
      })
      builder.addCase(register.rejected,(state,action)=>{
+      state.success=false
+      state.error=true
+      state.message=action.payload
+      state.user=null
+
+     })
+     builder.addCase(login.pending,(state)=>{
+      state.isLoading=true
+     })
+     builder.addCase(login.fulfilled,(state,action)=>{
+      state.loading=false
+      state.success=true
+      state.user=action.payload
+     })
+     builder.addCase(login.rejected,(state,action)=>{
       state.success=false
       state.error=true
       state.message=action.payload
