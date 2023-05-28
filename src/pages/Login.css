@@ -1,0 +1,54 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    margin:auto;
+    align-items: center;
+    margin-top:10rem;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: inset 0 0 0 2px #e3e8ee;
+    font-size: 2rem;
+    border-radius: 12px;
+}
+.container img{
+    display: flex;
+    justify-content: center;
+   
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+
+
+}
+.login-form input{
+    width: 12rem;
+    height: 2rem;
+    border-radius: 12px;
+}
+
+.login-form div{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+button{
+    width: 12rem;
+    height: 2rem;
+    border-radius: 12px;
+}
+span{
+    display: flex;
+    font-size: 20px;
+}
+.pokemon-info{
+    font-size: 20px;
+}
+.search-bar{
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+}

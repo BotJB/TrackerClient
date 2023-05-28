@@ -15,9 +15,13 @@ const register=async (userData)=>{
 
 const login=async(userData)=>{
   const response=await axios.post(urlLogin,userData)
-  if(response.data){
-    localStorage.setItem('user',JSON.stringify(response.data))
+  //to check if the user exists
+  if(response.data.message=='User not found'){
+    return
   }
+  else{ localStorage.setItem('user',JSON.stringify(response.data))}
+   
+  
   return response.data
 }
 

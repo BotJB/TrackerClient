@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react'
 import { useSelector,useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { reset,login } from '../features/auth'
+import { Link } from "react-router-dom";
+import './Login.css'
 const Login = () => {
   const [userDetails,setUserDetials]=useState({
     email:'',
@@ -37,20 +39,41 @@ dispatch(login(userData))
 
 }
 
-console.log(userDetails)
+if(localStorage.getItem('user')){
+ return (
+  <div>
+    <h3>You are already logged In</h3>
+    <p>Return to search your favourite pokemon<Link to="/home">Go</Link></p>
+  </div>
+ )
+}
+else{
   return (
-    <div>
+    <div className="container">
+<h2 className="login-title">Log in</h2>
 
-      <form>
-   <label >Email</label>
-   <input type="text" name='email' id='email'onChange={onChange}/>
-   <label htmlFor="password">Password</label>
-   <input type="text" name='password' id='password' onChange={onChange}/>
-   <input type="submit" onClick={handleSubmit} />
+<form className="login-form">
+  <div>
+    <label for="name">Name </label>
+    <input type="text" name='email' placeholder='Email' id='email'onChange={onChange}/>
+  </div>
 
-      </form>
-    </div>
+  <div>
+    <label for="password">Password </label>
+    <input type="text" name='password' id='password' placeholder='Password' onChange={onChange}/>
+  </div>
+
+  <button className="btn btn--form" type="submit" value="Log in" onClick={handleSubmit}>
+    Log in
+  </button>
+</form>
+</div>
   )
 }
+ 
+}
+
+
+
 
 export default Login
