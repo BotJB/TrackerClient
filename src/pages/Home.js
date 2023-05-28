@@ -1,4 +1,5 @@
 import React,{useEffect,useState} from 'react'
+import './Home.css'
 const Home = () => {
 const [pokemon,setPokemon]=useState({
   name:'',
@@ -36,15 +37,15 @@ if(localStorage.getItem('user')){
   return (
     <div className='container'>
        <div className="search-bar">
-   <input type="text" name="search" onChange={handleChange} />
-   <input type="Submit" onClick={getData} />
+   <input type="text" name="search" onChange={handleChange} className='search-item' />
+   <input type="Submit" onClick={getData} className='search-submit'/>
    </div>
       
       <div className="wrapper">
      <div className="pokemon-container">
   <div className="pokemon-intro">
   <img src={pokemon.img} alt="" />
-    <h3>Name:{pokemon.name}</h3>
+    <h5>Name:{pokemon.name}</h5>
     <p>Abilities:{pokemon.abilities?.map(item=>{
       return(
         <span>{item.ability.name}</span>
